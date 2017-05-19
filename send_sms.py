@@ -4,16 +4,22 @@ from config import ACCOUNT_SID, AUTH_TOKEN, TWILIO_NUMBER
 
 def validates_choice(user_choice):
     """Returns bool of user's choice"""
-    if user_choice == "yes":
+    user_choice = user_choice.lower()
+
+    if user_choice == "yes" or  user_choice == "y" or user_choice == "yeah":
         return True
-    else:
+    elif user_choice == "no" or user_choice == "n" or  user_choice == "nope":
         return False
 
 
 def gets_to_number():
     """Ask user for phone number, returns it with +1 added"""
     user_number = raw_input("What number would you like to send a message to? (no special characters) ")
-    user_number = "+1 " + user_number
+    formatted_num = ""
+    for i in range(len(user_number)):
+        if user_number[i].isdigit():
+            formatted_num = formatted_num + user_number[i] 
+    user_number = "+1 " + formatted_num
     return user_number
 
 def gets_message_to_send():
