@@ -4,20 +4,22 @@ from config import ACCOUNT_SID, AUTH_TOKEN, TWILIO_NUMBER
 
 def validates_choice(user_choice):
     """Returns bool of user's choice"""
-
-    pass
+    if user_choice == "yes":
+        return True
+    else:
+        return False
 
 
 def gets_to_number():
     """Ask user for phone number, returns it with +1 added"""
-
-    pass
-
+    user_number = raw_input("What number would you like to send a message to? (no special characters) ")
+    user_number = "+1 " + user_number
+    return user_number
 
 def gets_message_to_send():
     """Ask user for message to send"""
-
-    pass
+    user_message = raw_input("What message would you like to send? ")
+    return user_message
 
 
 def send_message(to_number, to_message, ACCOUNT_SID,
@@ -38,7 +40,7 @@ def main(ACCOUNT_SID, AUTH_TOKEN, TWILIO_NUMBER):
 
     print "Welcome to this Twilio API Demo"
 
-    user_choice = raw_input("""Would you like to send a next message? """)
+    user_choice = raw_input("""Would you like to send a text message? """)
 
     validated_user_choice = validates_choice(user_choice)
 
